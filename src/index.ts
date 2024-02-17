@@ -7,6 +7,7 @@ import cors from 'cors';
 
 import router from './Router';
 import mongoose from 'mongoose';
+import { setupSwagger } from '../swagger'; 
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use('/', router());
+setupSwagger(app); 
 
 const PORT = process.env.PORT || 8080;
 const server = http.createServer(app);
